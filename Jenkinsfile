@@ -1,9 +1,16 @@
 pipeline {
-    agent { docker { image 'node:14-alpine' } }
+    agent any
     stages {
         stage('build') {
             steps {
-                sh 'npm --version'
+                sh 'sudo npm install'
+                sh 'sudo npm run build'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'sudo rm -rf /var/www/qterra-front'
+                sh 'sudo cp -r ${WORKSPACE}/build/ /var/www/qterra-front/'
             }
         }
     }
