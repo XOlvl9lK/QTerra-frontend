@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'sudo npm install'
-                sh 'sudo npm run build'
+                sh 'npm install'
+                sh 'npm run build'
             }
         }
         stage('deploy') {
             steps {
-                sh 'sudo rm -rf /var/www/qterra-front'
-                sh 'sudo cp -r ${WORKSPACE}/build/ /var/www/qterra-front/'
+                sh 'rm -rf /var/www/qterra-front'
+                sh 'cp -r ${WORKSPACE}/build/ /var/www/qterra-front/'
             }
         }
     }
