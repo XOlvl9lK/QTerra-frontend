@@ -9,8 +9,8 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'rm -rf /var/www/qterra-front'
-                sh 'cp -r ${WORKSPACE}/build/ /var/www/qterra-front/'
+                sh 'sudo rm -rf /var/www/qterra-front'
+                sh 'sudo cp -r ${WORKSPACE}/build/ /var/www/qterra-front/'
             }
         }
     }
